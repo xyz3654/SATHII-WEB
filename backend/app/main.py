@@ -18,9 +18,10 @@ app.add_middleware(
 
 @app.get("/")
 async def root():
-    return {"message": "Sathi API is running"}
+    return {"status": "ok", "message": "Sathi API is live on Netlify"}
 
-@app.post("/api/guidance", response_model=GuidanceResponse)
+@app.post("/api/guidance")
+@app.post("/guidance")
 async def seek_guidance(request: GuidanceRequest, background_tasks: BackgroundTasks):
     try:
         response_text = await get_shathi_guidance(
