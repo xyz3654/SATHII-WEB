@@ -133,6 +133,8 @@ function App() {
                             setResponse(data.response)
                             setHistory(prev => [...prev, { role: 'assistant', content: data.response }])
                         } catch (err) {
+                            console.error("FULL ERROR DETAILS:", err);
+                            console.log("Failed API URL:", `${import.meta.env.VITE_API_URL || ''}/api/guidance`);
                             setResponse("I'm sorry, I'm having trouble connecting to the wisdom right now. Please try again soon.")
                         } finally {
                             setLoading(false)
